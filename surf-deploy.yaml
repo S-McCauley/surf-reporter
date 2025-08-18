@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: noaa-exporter
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: noaa-exporter
+  template:
+    metadata:
+      labels:
+        app: noaa-exporter
+    spec:
+      containers:
+        - name: noaa-exporter
+          image: cascade1080/noaa-exporter:latest
+          ports:
+            - containerPort: 8000
+
