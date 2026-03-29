@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: noaa-exporter
-          image: localhost:5000/noaa-exporter:latest
+          image: cascade1080/noaa-exporter:latest
           ports:
             - containerPort: 8000
 
