@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: noaa-exporter
-  namespace: monitoring
+  name: surfreporter-svc
+  namespace: surfreporter
   annotations:
     prometheus.io/scrape: "true"
     prometheus.io/port: "8000"
 spec:
   selector:
-    app: noaa-exporter
+    app: surfreporter
   ports:
     - port: 8000
       targetPort: 8000

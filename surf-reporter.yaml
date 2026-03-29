@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: noaa-exporter
-  namespace: monitoring
+  name: surfreporter-deploy
+  namespace: surfreporter
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: noaa-exporter
+      app: surfreporter
   template:
     metadata:
       labels:
-        app: noaa-exporter
+        app: surfreporter
     spec:
       containers:
-        - name: noaa-exporter
+        - name: surfreporter
           image: cascade1080/noaa-exporter:latest
           ports:
             - containerPort: 8000
@@ -23,11 +23,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: noaa-exporter
+  name: surfreporter-svc
   namespace: surfreporter
 spec:
   selector:
-    app: noaa-exporter
+    app: surfreporter
   ports:
     - port: 8000
       targetPort: 8000
@@ -36,20 +36,20 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: noaa-exporter-ingress
+  name: surfreporter-ingress
   namespace: surfreporter
   annotations:
-    kubernetes.io/ingress.class: nginx
+    kubernetes.io/ingress.class: traefik
 spec:
   rules:
-    - host: noaa-exporter.local
+    - host: surfreporter.local
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: noaa-exporter
+                name: surfreporter-svc
                 port:
                   number: 8000
 

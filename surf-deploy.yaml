@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: noaa-exporter
-  namespace: monitoring
+  name: surfreporter
+  namespace: surfreporter
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: noaa-exporter
+      app: surfreporter
   template:
     metadata:
       labels:
-        app: noaa-exporter
+        app: surfreproter
     spec:
       containers:
-        - name: noaa-exporter
+        - name: surfreporter
           image: cascade1080/noaa-exporter:latest
           ports:
             - containerPort: 8000
