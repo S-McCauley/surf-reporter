@@ -67,7 +67,7 @@ def fetch_buoy_data():
 
 # --- Main Loop ---
 if __name__ == "__main__":
-    start_http_server(8000)  # Prometheus scraping endpoint
+    start_http_server(8000, addr='0.0.0.0')  # Prometheus scraping endpoint
     update_interval = 600     # Fetch every 10 minutes
 
     while True:

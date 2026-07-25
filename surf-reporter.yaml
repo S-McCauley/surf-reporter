@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: surfreporter
-          image: cascade1080/noaa-exporter:latest
+          image: cascade1080/noaa-exporter:1.0.0
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
